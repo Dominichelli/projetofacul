@@ -43,7 +43,7 @@ import {
             </div>
           
           <div className='mt-[100px]'>
-          <div  className='flex space-x-8 mb-[120px]'> {/*Ajustar, não está indo até o fim da página  */}
+          <div  className='flex space-x-8 '> {/*Ajustar, não está indo até o fim da página  */}
               <Card className="w-[350px]">
                 <CardHeader>
                   <CardTitle>Perfil</CardTitle>
