@@ -36,7 +36,7 @@ export default function Teams () {
           <div className="flex justify-between items-center text-2xl font-aleo">
             <div className="inset-y-0 right-0 ">Equipes</div>
             <div className="flex space-x-4 mr-[80px]">
-              <span className="mr-4" ><Moon  /></span>
+            
               <span><Circle size={30} color="#A9A9A9" /></span>
             </div>
 
