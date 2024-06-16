@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model TB_Card {
+  id             Int              @id @default(autoincrement())
+  titulo         String
+  descricao      String
+  status         String
+  tag            String
+  id_update_Card Int
+  id_comentar    Int
+  id_equipe      Int
+  id_resp        Int
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  Rl_update_Card Rl_update_Card[]
+  TB_Equipe      TB_Equipe        @relation(fields: [id_equipe], references: [id])
+
+  @@index([id_equipe], map: "TB_Card_id_equipe_fkey")
+}
+
+model Tb_Comentarios {
+  id        Int      @id @default(autoincrement())
+  descricao String
+  id_login  Int
+  id_card   Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Rl_update_Card {
+  id        Int      @id @default(autoincrement())
+  id_card   Int
+  id_login  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  TB_Card   TB_Card  @relation(fields: [id_card], references: [id])
+
+  @@index([id_card], map: "Rl_update_Card_id_card_fkey")
+}
+
+model TB_Equipe {
+  id        Int       @id @default(autoincrement())
+  titulo    String
+  descricao String
+  id_cargo  Int
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  TB_Card   TB_Card[]
+}
+
+model Rl_cargoXuser {
+  id        Int      @id @default(autoincrement())
+  id_cargo  Int
+  id_user   Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  cargo     cargo    @relation(fields: [id_cargo], references: [id])
+  user      user     @relation(fields: [id_user], references: [id])
+
+  @@index([id_cargo], map: "Rl_cargoXuser_id_cargo_fkey")
+  @@index([id_user], map: "Rl_cargoXuser_id_user_fkey")
+}
+
+model user {
+  id            Int             @id @default(autoincrement())
+  email         String          @unique
+  name          String
+  image         String?
+  id_cargoXuser Int
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  Rl_cargoXuser Rl_cargoXuser[]
+}
+
+model cargo {
+  id            Int             @id @default(autoincrement())
+  titulo        String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @default(now()) @updatedAt
+  Rl_cargoXuser Rl_cargoXuser[]
+
+  @@map("cargo")
+}
