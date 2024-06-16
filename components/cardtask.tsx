@@ -37,7 +37,7 @@ export function CardTask() {
                 <DropdownMenuItem>Excluir</DropdownMenuItem>
               </DropdownMenuContent>
            </DropdownMenu></div>
-        </CardTitle>
+        </CardTitle>  
       </CardHeader>
      
           <div className="absolute top-full left-[calc(100% + 10px)] mt-[10px]">
