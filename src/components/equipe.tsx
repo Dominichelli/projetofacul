@@ -127,10 +127,14 @@ const Equipes: React.FC<EquipesProps> = ({ Users, Equipe, Cards, self }) => {
         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mb-6">
           <Dialog>
             <DialogTrigger asChild>
+<<<<<<< HEAD
               <Button className="fixed bottom-6 rigt-6 md:bottom-8 md:right-8 bg-logo">
                 <Plus className="h-6 w-6"/>
                 <span className="sr-only">Criar Equipe  </span>
               </Button>
+=======
+              <Button variant="secondary">Criar Equipe</Button>
+>>>>>>> b7068726ba5c58f6d618a299af6c08317ba7f001
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
